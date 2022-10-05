@@ -11,10 +11,21 @@ const players = (() => {
   const players = [];
   
   function getPlayers() {
-    const player1Name = document.querySelector('#player1');
-    const player2Name = document.querySelector('#player2'); 
-    const player1 = new Players(player1Name.value = 'player1', 'X');
-    const player2 = new Players(player2Name.value = 'player2', 'O');
+
+    let player1Name = document.querySelector('#player1').value;
+    let player2Name = document.querySelector('#player2').value;
+    
+    if(!player1Name) {
+      player1Name = 'Player 1';
+    } else if(!player2Name) {
+      player2Name = 'Player 2';
+    } else {
+      player1Name.value;
+      player2Name.value;
+    }
+
+    const player1 = new Players(player1Name, 'X');
+    const player2 = new Players(player2Name, 'O');
 
     players.push(player1);
     players.push(player2);
