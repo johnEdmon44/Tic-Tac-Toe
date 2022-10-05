@@ -5,10 +5,42 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <script src="main.js" defer></script>
   <title>Tic Tac Toe</title>
 </head>
 <body>
-  
+  <form action="" class="visible" id="form">
+    <fieldset>
+
+      <ul>
+        <li>
+          <label for="player1">Player1</label>
+          <input type="text" name="player1" placeholder="Enter name (optional)" id="player1">
+        </li>
+
+        <li>
+          <label for="player2">Player2</label>
+          <input type="text" name="player2" placeholder="Enter name (optional)" id="player2">
+        </li>
+      </ul>
+
+    </fieldset>
+
+    <button type="button" class="btnForms" id="startBtn">START GAME</button>
+    <button type="submit" class="btnForms" id="computerBtn">A.I (WIP)</button>
+  </form>
+
+  <div class="container">
+      <div class="items">X</div>
+      <div class="items">X</div>
+      <div class="items">X</div>
+      <div class="items">X</div>
+      <div class="items">X</div>
+      <div class="items">X</div>
+      <div class="items">X</div>
+      <div class="items">X</div>
+      <div class="items">X</div>
+  </div>
 </body>
 </html>
