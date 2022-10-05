@@ -25,9 +25,17 @@ const players = (() => {
   function _toggle () {
     const form = document.querySelector('#form');
     const board = document.querySelector('.container');
+    const playerNames = document.querySelector('.players');
 
     form.classList.toggle('visible');
     board.classList.toggle('visible');
+    playerNames.classList.toggle('visible');
+  }
+
+  function displayPlayers () {
+    document.querySelector('#player1Name').textContent = players[0].name;
+    document.querySelector('#player2Name').textContent = players[1].name;
+    console.log(players[0].name)
   }
 
   return {
@@ -41,4 +49,5 @@ const startBtn = document.querySelector('#startBtn');
 startBtn.addEventListener('click', () => {
   players._getPlayers();
   players._toggle();
+  players.displayPlayers();
 });
