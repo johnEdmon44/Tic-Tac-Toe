@@ -57,6 +57,8 @@ startBtn.addEventListener('click', () => {
 
 
 const game = (() => {
+  const playerScoreX = document.querySelector('#playerScoreX');
+  const playerScoreO = document.querySelector('#playerScoreO');
 
   function addDataAtt () {
     boxes.forEach( (box, i) => {
@@ -109,8 +111,22 @@ const game = (() => {
       goal6 === 'X'
     ) {
       playerX = true;
+      playerXScore++;
       getWinner.textContent = 'Player X wins!';
-      return playerX
+
+      boxes.forEach( box => {
+        box.textContent = '';
+      });
+
+      playerScoreX.textContent = playerXScore;
+
+      data.length = 0
+      weapons.length = 0;
+      playerO = false;
+      playerX = false;
+      draw = false;
+
+      return playerX;
     } else if (
       goal0 === 'O' &&
       goal1 === 'O' &&
@@ -145,13 +161,38 @@ const game = (() => {
       goal6 === 'O'
     ) {
       playerO = true;
+      playerOScore++
       getWinner.textContent = 'Player O wins!';
+
+      boxes.forEach( box => {
+        box.textContent = '';
+      });
+
+      playerOScore.textContent = playerOScore;
+
+      data.length = 0
+      weapons.length = 0;
+      playerO = false;
+      playerX = false;
+      draw = false;
+      
       return playerO;
     }
 
     if(data.length === 9 && !playerO && !playerX) {
       draw = true;
-      getWinner.textContent = 'Draw!'
+      getWinner.textContent = 'Draw!';
+
+      boxes.forEach( box => {
+        box.textContent = '';
+      });
+
+      data.length = 0
+      weapons.length = 0;
+      playerO = false;
+      playerX = false;
+      draw = false;
+      
       return draw;
     }
   }
@@ -171,6 +212,8 @@ const weapons = []; // to alternate between X and O
 let playerX = false;
 let playerO = false;
 let draw = false;
+let playerXScore = 0;
+let playerOScore = 0;
 const boxes = document.querySelectorAll('.items');
 const getWinner = document.querySelector('#winner');
 boxes.forEach( x => {
@@ -182,6 +225,10 @@ boxes.forEach( x => {
 
     if(playerX || playerO || draw) {
       return
+    }
+
+    if(playerOScore === 3 || playerXScore === 3) {
+      return;
     }
 
     if(data.length === 0 || weapons[weapons.length -1] === 'O') {
@@ -206,9 +253,12 @@ restartBtn.addEventListener('click', () => {
   playerX = false;
   draw = false;
 
+  playerOScore = 0;
+  playerXScore = 0;
+
   boxes.forEach( box => {
     box.textContent = '';
   });
 
   getWinner.textContent = '';
-})
+});
