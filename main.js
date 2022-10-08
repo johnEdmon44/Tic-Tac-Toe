@@ -30,6 +30,7 @@ const players = (() => {
     form.classList.toggle('visible');
     board.classList.toggle('visible');
     playerNames.classList.toggle('visible');
+    restartBtn.classList.toggle('visible')
   }
 
   function displayPlayers () {
@@ -167,9 +168,9 @@ const data = []; // data attribute use to check the winners
 const weapons = []; // to alternate between X and O
 
 //
-let playerX;
-let playerO;
-let draw;
+let playerX = false;
+let playerO = false;
+let draw = false;
 const boxes = document.querySelectorAll('.items');
 const getWinner = document.querySelector('#winner');
 boxes.forEach( x => {
@@ -196,3 +197,18 @@ boxes.forEach( x => {
     game.checkWinner();
   });
 });
+
+const restartBtn = document.querySelector('#restart');
+restartBtn.addEventListener('click', () => {
+  data.length = 0
+  weapons.length = 0;
+  playerO = false;
+  playerX = false;
+  draw = false;
+
+  boxes.forEach( box => {
+    box.textContent = '';
+  });
+
+  getWinner.textContent = '';
+})

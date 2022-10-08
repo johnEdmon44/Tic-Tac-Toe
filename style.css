@@ -21,7 +21,7 @@
 }
 
 .items {
-  padding: 40px;
+  height: 100px;
   border: 3px solid grey;
   font-size: 3rem;
 }
@@ -64,5 +64,11 @@ form button {
   text-align: center;
   margin-left: 10%;
   margin-right: 10%;
+  visibility: hidden;
+}
+
+#btn {
+  display: flex;
+  justify-content: center;
   visibility: hidden;
 }
