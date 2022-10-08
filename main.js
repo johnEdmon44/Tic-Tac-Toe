@@ -108,7 +108,7 @@ const game = (() => {
       goal6 === 'X'
     ) {
       playerX = true;
-      console.log('X')
+      getWinner.textContent = 'Player X wins!';
       return playerX
     } else if (
       goal0 === 'O' &&
@@ -144,13 +144,13 @@ const game = (() => {
       goal6 === 'O'
     ) {
       playerO = true;
-      console.log('O')
-      return playerO
+      getWinner.textContent = 'Player O wins!';
+      return playerO;
     }
 
     if(data.length === 9 && !playerO && !playerX) {
       draw = true;
-      console.log('draw')
+      getWinner.textContent = 'Draw!'
       return draw;
     }
   }
@@ -171,6 +171,7 @@ let playerX;
 let playerO;
 let draw;
 const boxes = document.querySelectorAll('.items');
+const getWinner = document.querySelector('#winner');
 boxes.forEach( x => {
   x.addEventListener('click', e => {
     
