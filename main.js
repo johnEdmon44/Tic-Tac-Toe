@@ -178,6 +178,10 @@ boxes.forEach( x => {
       return;
     }
 
+    if(playerX || playerO || draw) {
+      return
+    }
+
     if(data.length === 0 || weapons[weapons.length -1] === 'O') {
       data.push(e.target.dataset.index);
       weapons.push('X');
