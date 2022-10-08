@@ -10,7 +10,7 @@ const players = (() => {
 
   const players = [];
   
-  function _getPlayers() {
+  function getPlayers() {
 
     let player1Name = document.querySelector('#player1');
     let player2Name = document.querySelector('#player2');
@@ -22,7 +22,7 @@ const players = (() => {
     players.push(player2);
   }
 
-  function _toggle () {
+  function toggle () {
     const form = document.querySelector('#form');
     const board = document.querySelector('.container');
     const playerNames = document.querySelector('.players');
@@ -39,15 +39,31 @@ const players = (() => {
   }
 
   return {
-    _getPlayers,
-    _toggle,
+    getPlayers,
+    toggle,
     displayPlayers,
   }
 })();
 
+
 const startBtn = document.querySelector('#startBtn');
 startBtn.addEventListener('click', () => {
-  players._getPlayers();
-  players._toggle();
+  players.getPlayers();
+  players.toggle();
   players.displayPlayers();
+  game.addDataAtt();
 });
+
+
+const game = (() => {
+  function addDataAtt () {
+    boxes.forEach( (box, i) => {
+      box.setAttribute('data-index', i);
+    });
+  }
+
+  return {
+    addDataAtt,
+  }
+
+})(); 
