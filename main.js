@@ -56,6 +56,7 @@ startBtn.addEventListener('click', () => {
 
 
 const game = (() => {
+
   function addDataAtt () {
     boxes.forEach( (box, i) => {
       box.setAttribute('data-index', i);
@@ -67,3 +68,27 @@ const game = (() => {
   }
 
 })(); 
+
+const data = []; // data attribute use to check the winners
+const weapons = []; // to alternate between X and O
+
+//
+const boxes = document.querySelectorAll('.items');
+boxes.forEach( x => {
+  x.addEventListener('click', e => {
+    
+    if(e.target.textContent) {
+      return;
+    }
+
+    if(data.length === 0 || weapons[weapons.length -1] === 'O') {
+      data.push(e.target.dataset.index);
+      weapons.push('X');
+      e.target.textContent = 'X';
+    } else {
+      data.push(e.target.dataset.index);
+      weapons.push('O');
+      e.target.textContent = 'O';
+    }
+  });
+});
